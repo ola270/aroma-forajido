@@ -1,0 +1,3451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>AROMA FORAJIDO | Colección Privada de Perfumería Árabe</title>
+  <meta name="description" content="AROMA FORAJIDO: Rarezas únicas al alcance de quienes saben elegir. Catálogo digital 3D de perfumería árabe original de alta concentración con sincronización en tiempo real.">
+
+  <!-- Tipografías de Alta Perfumería -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-black: #08080a;
+      --bg-surface: #101014;
+      --bg-surface-elevated: #16161c;
+      --bg-card: rgba(18, 18, 24, 0.85);
+      --bg-glass: rgba(22, 22, 30, 0.65);
+
+      --color-white: #ffffff;
+      --color-silver: #e2e2e8;
+      --color-muted: #8e8e99;
+      --color-dimmed: #555562;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(255, 255, 255, 0.35);
+
+      --accent-silver: #d9d9e2;
+      --accent-glow: rgba(255, 255, 255, 0.06);
+
+      --status-available: #2ecc71;
+      --status-available-bg: rgba(46, 204, 113, 0.12);
+      --status-soldout: #e74c3c;
+      --status-soldout-bg: rgba(231, 76, 60, 0.12);
+      --status-upcoming: #f39c12;
+      --status-upcoming-bg: rgba(243, 156, 18, 0.12);
+
+      --shadow-3d: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 255, 255, 0.03);
+      --shadow-float: 0 35px 70px -15px rgba(0, 0, 0, 0.95), 0 0 45px rgba(255, 255, 255, 0.08);
+
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-black);
+      color: var(--color-silver);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--color-white);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-luxury-primary {
+      background: #ffffff;
+      color: #08080a;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.95rem 2rem;
+      border: 1px solid #ffffff;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      transition: var(--transition-smooth);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-luxury-primary:hover:not(:disabled) {
+      background: #08080a;
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-luxury-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-luxury-outline {
+      background: rgba(16, 16, 20, 0.7);
+      color: #ffffff;
+      border: 1px solid var(--border-subtle);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.8rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      backdrop-filter: blur(8px);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-luxury-outline:hover:not(:disabled) {
+      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .btn-luxury-outline:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 8, 10, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.1rem 0;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-identity {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .brand-avatar-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      overflow: hidden;
+      background: #0d0d12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
+      transition: transform 0.4s ease;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .brand-avatar-box:hover {
+      transform: rotate(4deg) scale(1.05);
+      border-color: #ffffff;
+    }
+
+    .brand-avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-logo-placeholder {
+      font-size: 0.55rem;
+      text-align: center;
+      color: var(--color-silver);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+      padding: 4px;
+      text-transform: uppercase;
+    }
+
+    .brand-titles h1 {
+      font-size: 1.25rem;
+      margin: 0;
+      letter-spacing: 0.16em;
+      line-height: 1.1;
+    }
+
+    .brand-titles .tagline {
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+      font-weight: 400;
+      margin-top: 0.15rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-section {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 4.5rem 0 3.5rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--color-silver);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      padding: 0.45rem 1.2rem;
+      border-radius: 30px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.08;
+      margin-bottom: 1.4rem;
+      color: #ffffff;
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--color-muted);
+      font-weight: 400;
+      font-size: 0.55em;
+      letter-spacing: 0.2em;
+      margin-top: 0.4rem;
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      color: var(--color-muted);
+      margin-bottom: 2.2rem;
+      max-width: 540px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero-cta-wrap {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-3d-stage {
+      perspective: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-floating-card {
+      width: 100%;
+      max-width: 380px;
+      height: 480px;
+      background: radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.08) 0%, rgba(16, 16, 22, 0.95) 75%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-float);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      animation: ambientFloat 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes ambientFloat {
+      0% { transform: translateY(0px) rotateX(2deg) rotateY(-3deg); }
+      100% { transform: translateY(-16px) rotateX(-3deg) rotateY(4deg); }
+    }
+
+    .hero-floating-card img {
+      max-width: 82%;
+      max-height: 310px;
+      object-fit: contain;
+      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.95));
+      transform: translateZ(45px);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-floating-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateZ(35px);
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid var(--border-subtle);
+      padding: 0.5rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      white-space: nowrap;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .section-title-wrap {
+      margin-bottom: 2.5rem;
+      border-left: 2px solid #ffffff;
+      padding-left: 1.2rem;
+    }
+
+    .section-title-wrap h2 {
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+
+    .section-title-wrap p {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      margin-top: 0.4rem;
+    }
+
+    .catalog-control-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.3rem;
+      margin-bottom: 2.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (min-width: 900px) {
+      .catalog-control-panel {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 440px;
+    }
+
+    .search-input-wrap svg {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-muted);
+      pointer-events: none;
+    }
+
+    .search-input-wrap input {
+      width: 100%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: #ffffff;
+      padding: 0.85rem 1rem 0.85rem 2.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .search-input-wrap input:focus {
+      border-color: #ffffff;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .filters-scroll-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .filters-scroll-wrap::-webkit-scrollbar { display: none; }
+
+    .filter-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: var(--color-muted);
+      padding: 0.6rem 1.1rem;
+      border-radius: 30px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition-smooth);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #ffffff;
+      color: #08080a;
+      border-color: #ffffff;
+    }
+
+    .perfumes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 2.2rem;
+      margin-bottom: 5rem;
+      perspective: 1200px;
+    }
+
+    .card-3d-anchor {
+      perspective: 1000px;
+      height: 100%;
+    }
+
+    .perfume-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      box-shadow: var(--shadow-3d);
+      backdrop-filter: blur(10px);
+    }
+
+    .perfume-card:hover {
+      box-shadow: var(--shadow-float);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .card-tag-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 10;
+      background: #ffffff;
+      color: #000;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.7rem;
+      border-radius: 4px;
+      transform: translateZ(25px);
+    }
+
+    .card-gender-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 10;
+      background: rgba(8, 8, 10, 0.85);
+      border: 1px solid var(--border-subtle);
+      color: var(--color-silver);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      transform: translateZ(25px);
+    }
+
+    .card-photo-box {
+      width: 100%;
+      height: 310px;
+      background: radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.05) 0%, #101014 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .card-photo-box img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 22px rgba(0, 0, 0, 0.85));
+      transform: translateZ(35px);
+      transition: transform 0.4s ease;
+    }
+
+    .perfume-card:hover .card-photo-box img {
+      transform: translateZ(50px) scale(1.08) translateY(-6px);
+    }
+
+    .card-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(16, 16, 22, 0.4) 0%, rgba(10, 10, 14, 0.98) 100%);
+      transform: translateZ(20px);
+    }
+
+    .card-brand {
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+
+    .card-family {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      margin-bottom: 1.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.8rem;
+      margin-bottom: 1.2rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .card-price-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-price-old {
+      font-size: 0.75rem;
+      color: var(--color-dimmed);
+      text-decoration: line-through;
+      line-height: 1;
+    }
+
+    .card-price-current {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      font-family: 'Cinzel', serif;
+    }
+
+    .status-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.65rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .status-disponible {
+      color: var(--status-available);
+      background: var(--status-available-bg);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+    }
+
+    .status-agotado {
+      color: var(--status-soldout);
+      background: var(--status-soldout-bg);
+      border: 1px solid rgba(231, 76, 60, 0.3);
+    }
+
+    .status-proximamente {
+      color: var(--status-upcoming);
+      background: var(--status-upcoming-bg);
+      border: 1px solid rgba(243, 156, 18, 0.3);
+    }
+
+    .btn-view-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      color: #ffffff;
+      border: 1px solid var(--border-subtle);
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-view-card:hover {
+      background: #ffffff;
+      color: #08080a;
+      border-color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 4, 6, 0.92);
+      backdrop-filter: blur(14px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background: var(--bg-surface);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 960px;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95);
+      position: relative;
+      transform: scale(0.95) translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-backdrop.active .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-close-btn:hover {
+      background: #ffffff;
+      color: #000000;
+      transform: rotate(90deg);
+    }
+
+    .modal-grid-details {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .modal-grid-details {
+        grid-template-columns: 48% 52%;
+      }
+    }
+
+    .gallery-container {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, #121218 90%);
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      border-right: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .gallery-stage {
+      width: 100%;
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      perspective: 800px;
+    }
+
+    .gallery-main-img {
+      max-width: 90%;
+      max-height: 320px;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.9));
+      transition: transform 0.4s ease, opacity 0.3s ease;
+      cursor: zoom-in;
+    }
+
+    .gallery-main-img.transitioning {
+      opacity: 0.3;
+      transform: scale(0.92) translateZ(-30px);
+    }
+
+    .gallery-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      z-index: 5;
+    }
+
+    .gallery-nav-btn:hover {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .gallery-nav-prev { left: 0.5rem; }
+    .gallery-nav-next { right: 0.5rem; }
+
+    .gallery-thumbnails-wrap {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+      width: 100%;
+      overflow-x: auto;
+      padding: 0.4rem;
+      justify-content: center;
+      scrollbar-width: thin;
+    }
+
+    .gallery-thumb-item {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-subtle);
+      background: #09090d;
+      padding: 3px;
+      cursor: pointer;
+      opacity: 0.55;
+      transition: var(--transition-smooth);
+      flex-shrink: 0;
+    }
+
+    .gallery-thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .gallery-thumb-item:hover, .gallery-thumb-item.active {
+      opacity: 1;
+      border-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+    }
+
+    .modal-info-col {
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .modal-brand {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .modal-name {
+      font-size: 1.8rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.15;
+    }
+
+    .modal-ref-tag {
+      font-size: 0.72rem;
+      color: var(--color-dimmed);
+      margin-bottom: 1.2rem;
+    }
+
+    .modal-price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .modal-price-current {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .modal-price-old {
+      font-size: 1rem;
+      color: var(--color-dimmed);
+      text-decoration: line-through;
+    }
+
+    .olfactory-pyramid-box {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .pyramid-level {
+      font-size: 0.8rem;
+    }
+
+    .pyramid-label {
+      font-size: 0.68rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+
+    .pyramid-val {
+      color: var(--color-silver);
+    }
+
+    .modal-specs-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .spec-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      padding: 0.6rem 0.8rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .spec-k {
+      font-size: 0.65rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .spec-v {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .modal-desc-text {
+      font-size: 0.88rem;
+      color: var(--color-silver);
+      line-height: 1.6;
+      margin-bottom: 1.8rem;
+    }
+
+    .modal-cta-row {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-wa-order {
+      flex: 1;
+      background: #25d366;
+      color: #000000;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.95rem 1.5rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-wa-order:hover {
+      background: #1eb956;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+    }
+
+    .contact-banner {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, #0d0d12 80%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      margin: 4rem 0 5rem;
+    }
+
+    .contact-banner h3 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-banner p {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+    }
+
+    footer.site-footer {
+      background: #060608;
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.15em;
+    }
+
+    .footer-col p, .footer-col a {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+
+    .footer-social-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .footer-social-links a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      font-size: 0.78rem;
+      color: var(--color-dimmed);
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+      }
+    }
+
+    .btn-admin-discrete {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--color-dimmed);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-admin-discrete:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    #adminView {
+      display: none;
+      min-height: 100vh;
+      background: #09090c;
+      padding-bottom: 6rem;
+    }
+
+    .admin-top-bar {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .admin-bar-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .admin-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(46, 204, 113, 0.1);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+      color: #2ecc71;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .admin-status-pill.offline {
+      background: rgba(231, 76, 60, 0.1);
+      border-color: rgba(231, 76, 60, 0.3);
+      color: #e74c3c;
+    }
+
+    .admin-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1.2rem;
+      margin: 2.2rem 0;
+    }
+
+    .kpi-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.3rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .kpi-number {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .kpi-label {
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .admin-toolbar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 1.2rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 2rem;
+    }
+
+    .admin-actions-flex {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .admin-table-wrap {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+
+    .admin-table th {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 1.1rem 1rem;
+      color: #ffffff;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .admin-table td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: middle;
+    }
+
+    .admin-table tr:hover td {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .table-perfume-thumb {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      background: #08080a;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-table-action {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      padding: 0.45rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-table-action:hover {
+      border-color: #ffffff;
+    }
+
+    .btn-table-danger:hover {
+      border-color: var(--status-soldout);
+      color: var(--status-soldout);
+      background: var(--status-soldout-bg);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      font-size: 0.72rem;
+      color: var(--color-silver);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      color: #ffffff;
+      padding: 0.75rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 600px) {
+      .form-row-2 { grid-template-columns: 1fr 1fr; }
+      .form-row-3 { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .photo-manager-box {
+      background: var(--bg-surface-elevated);
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      margin-top: 0.4rem;
+    }
+
+    .photo-manager-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .photo-card-item {
+      background: #09090d;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .photo-card-item.is-primary {
+      border-color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .photo-card-preview {
+      width: 100%;
+      height: 110px;
+      object-fit: contain;
+      padding: 6px;
+      background: #050508;
+    }
+
+    .photo-card-actions {
+      padding: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      background: #111116;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .photo-btn-primary {
+      font-size: 0.65rem;
+      padding: 0.25rem 0.4rem;
+      border-radius: 3px;
+      border: 1px solid var(--border-subtle);
+      background: transparent;
+      color: var(--color-silver);
+      cursor: pointer;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .photo-btn-primary.active {
+      background: #ffffff;
+      color: #000000;
+      font-weight: 700;
+      border-color: #ffffff;
+    }
+
+    .photo-btn-delete {
+      font-size: 0.65rem;
+      padding: 0.25rem 0.4rem;
+      border-radius: 3px;
+      border: 1px solid rgba(231, 76, 60, 0.3);
+      background: transparent;
+      color: var(--status-soldout);
+      cursor: pointer;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .photo-btn-delete:hover {
+      background: var(--status-soldout-bg);
+      border-color: var(--status-soldout);
+    }
+
+    .toast-box {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #14141a;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      padding: 1rem 1.4rem;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85);
+      z-index: 99999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      font-size: 0.88rem;
+      pointer-events: none;
+    }
+
+    .toast-box.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .upload-progress-container {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 0.8rem;
+      display: none;
+    }
+
+    .upload-progress-bar {
+      height: 100%;
+      background: #ffffff;
+      width: 0%;
+      transition: width 0.2s ease;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 9.5pt;
+      }
+
+      .site-header,
+      .hero-section,
+      .catalog-control-panel,
+      .contact-banner,
+      .site-footer,
+      .modal-backdrop,
+      .toast-box,
+      #adminView,
+      .btn-view-card,
+      .btn-admin-discrete {
+        display: none !important;
+      }
+
+      #clientView {
+        display: block !important;
+      }
+
+      .print-pdf-cover {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 95vh;
+        text-align: center;
+        page-break-after: always;
+        padding: 3rem;
+        box-sizing: border-box;
+        border: 2px solid #000;
+      }
+
+      .print-pdf-cover img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        margin-bottom: 2rem;
+        border: 2px solid #000;
+        object-fit: cover;
+      }
+
+      .print-pdf-cover h1 {
+        color: #000 !important;
+        font-size: 32pt;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.5rem;
+      }
+
+      .print-pdf-cover p {
+        color: #333 !important;
+        font-size: 13pt;
+        font-style: italic;
+        margin-bottom: 2rem;
+      }
+
+      .perfumes-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px !important;
+        perspective: none !important;
+      }
+
+      .perfume-card {
+        background: #ffffff !important;
+        border: 1px solid #ccc !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        transform: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .card-photo-box {
+        background: #f7f7f7 !important;
+        height: 180px !important;
+      }
+
+      .card-photo-box img {
+        max-height: 150px !important;
+        filter: none !important;
+        transform: none !important;
+      }
+
+      .card-brand, .card-title, .card-price-current {
+        color: #000000 !important;
+      }
+
+      .card-family {
+        color: #444444 !important;
+      }
+
+      .card-print-details {
+        display: block !important;
+        font-size: 8pt;
+        color: #333333 !important;
+        margin-top: 6px;
+        line-height: 1.35;
+        border-top: 1px dashed #ccc;
+        padding-top: 6px;
+      }
+
+      .print-pdf-footer-info {
+        display: block !important;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #ccc;
+        text-align: center;
+        font-size: 8.5pt;
+        color: #333;
+      }
+    }
+
+    .print-pdf-cover, .print-pdf-footer-info {
+      display: none;
+    }
+
+    .card-print-details {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="clientView">
+
+    <!-- Portada reservada exclusivamente para el PDF descargado / Impreso -->
+    <div class="print-pdf-cover">
+      <div class="brandLogoWrapper">
+        <img src="" alt="Aroma Forajido" class="printLogoTarget brandLogoImg" style="display:none;">
+        <div class="brandLogoFallbackMsg" style="border:1px dashed #000; padding:1.5rem; font-size:11pt; margin-bottom:1.5rem;">
+          <b>LOGO DE AROMA FORAJIDO</b><br>
+          <span style="font-size:9pt; color:#555;">Configúralo desde Administración → Identidad de marca</span>
+        </div>
+      </div>
+      <h1 class="printBrandNameTarget">AROMA FORAJIDO</h1>
+      <p class="printTaglineTarget">"Rarezas únicas al alcance de quienes saben elegir."</p>
+      <div style="font-size: 11pt; letter-spacing: 0.25em; text-transform: uppercase; border-top: 1px solid #000; border-bottom: 1px solid #000; padding: 0.5rem 1.8rem;">
+        Catálogo Privado de Perfumería Árabe
+      </div>
+    </div>
+
+    <!-- Header Navegación -->
+    <header class="site-header">
+      <div class="container nav-wrapper">
+        <div class="brand-identity">
+          <div class="brand-avatar-box brandLogoWrapper">
+            <img src="" alt="Aroma Forajido" class="brandLogoTarget brandLogoImg" style="display:none;">
+            <div class="brandLogoFallbackMsg brand-logo-placeholder">
+              Aroma<br>Forajido
+            </div>
+          </div>
+          <div class="brand-titles">
+            <h1 class="brandNameTarget">AROMA FORAJIDO</h1>
+            <p class="tagline brandTaglineTarget">"Rarezas únicas al alcance de quienes saben elegir."</p>
+          </div>
+        </div>
+
+        <div class="nav-actions">
+          <button class="btn-luxury-outline" onclick="window.scrollToSection('coleccionSection')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <span>Colección</span>
+          </button>
+          <button class="btn-luxury-primary" onclick="window.openWhatsAppConsultGeneral()">
+            <span>WhatsApp</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO SECTION CON EFECTO 3D REAL -->
+      <section class="hero-section">
+        <div class="container hero-grid">
+          <div>
+            <span class="hero-badge">Extractos & Elixires de Oriente</span>
+            <h2 class="hero-title" id="heroTitleText">
+              AROMA FORAJIDO
+              <span>Rarezas Olfativas Originales</span>
+            </h2>
+            <p class="hero-description" id="heroDescText">
+              Fragancias árabes seleccionadas para quienes no buscan encajar, sino marcar presencia. Proyección voraz, fijación duradera y autenticidad garantizada.
+            </p>
+            <div class="hero-cta-wrap">
+              <button class="btn-luxury-primary" onclick="window.scrollToSection('coleccionSection')">
+                Explorar Colección
+              </button>
+              <button class="btn-luxury-outline" onclick="window.openWhatsAppConsultGeneral()">
+                Consultar Catálogo
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-3d-stage">
+            <div class="hero-floating-card" id="heroCard3d">
+              <div class="brandLogoWrapper" style="display:flex; justify-content:center; align-items:center; width:100%; height:100%;">
+                <img src="" alt="Aroma Forajido Hero" class="brandLogoTarget brandLogoImg" style="display:none;">
+                <div class="brandLogoFallbackMsg" style="text-align:center; padding:1.5rem; border:1px dashed var(--border-subtle); border-radius:var(--radius-md);">
+                  <div style="font-family:'Cinzel', serif; font-size:1.1rem; color:#fff; margin-bottom:0.4rem;">Logo de Aroma Forajido</div>
+                  <div style="font-size:0.75rem; color:var(--color-muted);">Configúralo desde Administración → Identidad de marca</div>
+                </div>
+              </div>
+              <div class="hero-floating-badge">Colección Privada 2026</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="coleccionSection" style="padding-top: 3.5rem;">
+        <div class="section-title-wrap">
+          <h2>COLECCIÓN</h2>
+          <p>Fragancias árabes originales importadas con ficha olfativa completa y sincronización en tiempo real.</p>
+        </div>
+
+        <!-- Panel de Búsqueda y Filtros en Tiempo Real -->
+        <div class="catalog-control-panel">
+          <div class="search-input-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="liveSearchInput" placeholder="Buscar por perfume, casa (Lattafa, Afnan...), notas..." oninput="window.handleFilterAndSearch()">
+          </div>
+
+          <div class="filters-scroll-wrap">
+            <button class="filter-btn active" data-filter="all" onclick="window.applyGenderFilter('all', this)">TODOS</button>
+            <button class="filter-btn" data-filter="Masculino" onclick="window.applyGenderFilter('Masculino', this)">HOMBRE</button>
+            <button class="filter-btn" data-filter="Femenino" onclick="window.applyGenderFilter('Femenino', this)">MUJER</button>
+            <button class="filter-btn" data-filter="Unisex" onclick="window.applyGenderFilter('Unisex', this)">UNISEX</button>
+            <button class="filter-btn" data-filter="Disponible" onclick="window.applyGenderFilter('Disponible', this)">DISPONIBLES</button>
+            <button class="filter-btn" data-filter="Agotado" onclick="window.applyGenderFilter('Agotado', this)">AGOTADOS</button>
+            <button class="filter-btn" data-filter="Próximamente" onclick="window.applyGenderFilter('Próximamente', this)">PRÓXIMAMENTE</button>
+          </div>
+        </div>
+
+        <!-- Grid de Tarjetas 3D -->
+        <div class="perfumes-grid" id="catalogCardsContainer">
+          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--color-muted);">
+            <div style="display:inline-block; width:24px; height:24px; border:2px solid #fff; border-top-color:transparent; border-radius:50%; animation:spin 0.8s linear infinite; margin-bottom:1rem;"></div>
+            <div>Cargando colección oficial de Firestore...</div>
+          </div>
+        </div>
+
+        <!-- Banner de Contacto -->
+        <div class="contact-banner">
+          <h3>ENCUENTRA TU PRÓXIMO AROMA</h3>
+          <p>¿Buscas una estela dulce, amaderada, con oud o cuero ahumado? Escríbenos directamente y te asesoramos para elegir la joya que encaje con tu presencia.</p>
+          <button class="btn-luxury-primary" onclick="window.openWhatsAppConsultGeneral()">
+            <span>Atención Personalizada por WhatsApp</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4 class="brandNameTarget">AROMA FORAJIDO</h4>
+            <p class="brandTaglineTarget">"Rarezas únicas al alcance de quienes saben elegir."</p>
+            <p style="margin-top: 0.6rem;">Perfumería árabe original de alta concentración y estela imponente.</p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Canales Oficiales</h4>
+            <ul class="footer-social-links">
+              <li>
+                <a id="footerLinkInstagram" href="https://instagram.com/aroma_forajido" target="_blank" rel="noopener">
+                  Instagram: <strong id="footerTextInstagram">@aroma_forajido</strong>
+                </a>
+              </li>
+              <li>
+                <a id="footerLinkTiktok" href="https://tiktok.com/@aroma_forajido" target="_blank" rel="noopener">
+                  TikTok: <strong id="footerTextTiktok">@aroma_forajido</strong>
+                </a>
+              </li>
+              <li>
+                <a href="#" onclick="window.openWhatsAppConsultGeneral(); return false;">
+                  WhatsApp: <strong id="footerTextWhatsapp">+51 9XX XXX XXX</strong>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Medios de Pago & Envíos</h4>
+            <p><strong>Pagos:</strong> <span id="footerTextPayments">Yape, Plin, Transferencia Bancaria</span></p>
+            <p style="margin-top: 0.5rem;"><strong>Despachos:</strong> <span id="footerTextShipping">Envíos discretos y protegidos a nivel nacional.</span></p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 AROMA FORAJIDO. Todos los derechos reservados. Colección Privada.</p>
+          <button class="btn-admin-discrete" onclick="window.openAdminLoginModal()">
+            Administrar
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bloque de pie de página para PDF -->
+    <div class="print-pdf-footer-info container">
+      <p><b>AROMA FORAJIDO</b> • Rarezas únicas al alcance de quienes saben elegir.</p>
+      <p>Consultas y pedidos: WhatsApp <span id="printPdfWa"></span> | Instagram: @aroma_forajido</p>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="perfumeDetailModal" onclick="window.closeDetailModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="window.closeDetailModal()">✕</button>
+      <div class="modal-grid-details">
+        
+        <!-- Columna de Galería Multi-Foto -->
+        <div class="gallery-container">
+          <div class="gallery-stage" id="galleryStage">
+            <button class="gallery-nav-btn gallery-nav-prev" onclick="window.prevGalleryImage()" title="Foto anterior">‹</button>
+            <img id="detailMainGalleryImg" class="gallery-main-img" src="" alt="Perfume">
+            <button class="gallery-nav-btn gallery-nav-next" onclick="window.nextGalleryImage()" title="Foto siguiente">›</button>
+          </div>
+
+          <!-- Tiras de Miniaturas -->
+          <div class="gallery-thumbnails-wrap" id="galleryThumbnailsContainer"></div>
+        </div>
+
+        <!-- Columna de Especificaciones y Notas -->
+        <div class="modal-info-col">
+          <div>
+            <span class="modal-brand" id="detailBrand"></span>
+            <h2 class="modal-name" id="detailName"></h2>
+            <div class="modal-ref-tag" id="detailRef"></div>
+
+            <div class="modal-price-wrap">
+              <span class="modal-price-current" id="detailPrice"></span>
+              <span class="modal-price-old" id="detailPriceOld"></span>
+              <span id="detailStatusBadge"></span>
+            </div>
+
+            <!-- Pirámide Olfativa -->
+            <div class="olfactory-pyramid-box">
+              <div class="pyramid-level">
+                <span class="pyramid-label">Salida:</span>
+                <span class="pyramid-val" id="detailNotesTop"></span>
+              </div>
+              <div class="pyramid-level">
+                <span class="pyramid-label">Corazón:</span>
+                <span class="pyramid-val" id="detailNotesHeart"></span>
+              </div>
+              <div class="pyramid-level">
+                <span class="pyramid-label">Fondo:</span>
+                <span class="pyramid-val" id="detailNotesBase"></span>
+              </div>
+            </div>
+
+            <div class="modal-specs-list">
+              <div class="spec-item">
+                <span class="spec-k">Familia Olfativa</span>
+                <span class="spec-v" id="detailFamily"></span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-k">Género</span>
+                <span class="spec-v" id="detailGender"></span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-k">Duración</span>
+                <span class="spec-v" id="detailDuration"></span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-k">Proyección / Estela</span>
+                <span class="spec-v" id="detailSillage"></span>
+              </div>
+            </div>
+
+            <p class="modal-desc-text" id="detailDesc"></p>
+          </div>
+
+          <div class="modal-cta-row">
+            <button class="btn-wa-order" onclick="window.orderCurrentPerfumeWhatsApp()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+              <span>Consultar por WhatsApp</span>
+            </button>
+            <button class="btn-luxury-outline" onclick="window.closeDetailModal()">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="adminAuthModal" onclick="window.closeAdminLoginModal(event)">
+    <div class="modal-box" style="max-width: 440px; padding: 2.4rem;" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="window.closeAdminLoginModal()">✕</button>
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div class="brandLogoWrapper" style="display:flex; justify-content:center; margin-bottom:1rem;">
+          <div class="brand-avatar-box" style="width: 62px; height: 62px;">
+            <img src="" alt="Aroma Forajido" class="brandLogoTarget brandLogoImg" style="display:none;">
+            <div class="brandLogoFallbackMsg brand-logo-placeholder" style="font-size:0.6rem;">
+              Aroma<br>Forajido
+            </div>
+          </div>
+        </div>
+        <span class="card-brand">ACCESO REAL FIREBASE</span>
+        <h3 style="font-size: 1.35rem; margin-top: 0.3rem;">PANEL PRIVADO</h3>
+        <p style="font-size: 0.78rem; color: var(--color-muted); margin-top: 0.4rem;">
+          Inicia sesión con tu cuenta de administrador de Firebase Authentication.
+        </p>
+      </div>
+
+      <form onsubmit="window.handleAdminLoginSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Correo de Administrador</label>
+          <input type="email" id="adminEmailInput" class="form-input" placeholder="admin@aromaforajido.com" required autofocus>
+        </div>
+        <div class="form-group" style="margin-top: 0.8rem;">
+          <label class="form-label">Contraseña</label>
+          <input type="password" id="adminPassInput" class="form-input" placeholder="••••••••••••" required>
+        </div>
+
+        <div style="font-size: 0.72rem; color: var(--color-muted); margin: 0.8rem 0; line-height: 1.4;">
+          Seguridad verificada por Firebase Authentication.
+        </div>
+
+        <button type="submit" id="btnAdminLoginSubmit" class="btn-luxury-primary" style="width: 100%; margin-top: 0.5rem;">
+          Ingresar al Panel
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="adminView">
+    <div class="admin-top-bar">
+      <div class="container admin-bar-wrap">
+        <div style="display: flex; align-items: center; gap: 0.9rem;">
+          <div class="brand-avatar-box brandLogoWrapper" style="width: 42px; height: 42px;">
+            <img src="" alt="Aroma Forajido" class="brandLogoTarget brandLogoImg" style="display:none;">
+            <div class="brandLogoFallbackMsg brand-logo-placeholder" style="font-size:0.5rem;">
+              AF
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <h3 style="font-size: 0.95rem; margin: 0;">PANEL ADMINISTRATIVO</h3>
+              <span class="admin-status-pill" id="adminCloudStatusPill">
+                <span style="width:6px; height:6px; border-radius:50%; background:#2ecc71;"></span>
+                Firebase Conectado
+              </span>
+            </div>
+            <span style="font-size: 0.7rem; color: var(--color-muted);" id="adminUserEmailDisplay">Cargando credenciales...</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; align-items: center;">
+          <button class="btn-luxury-primary" onclick="window.switchView('client')">
+            <span>Ver Catálogo</span>
+          </button>
+          <button class="btn-luxury-outline" onclick="window.triggerDownloadPdfCatalog()" title="Genera el catálogo limpio en PDF listo para compartir">
+            <span>Descargar PDF Actualizado</span>
+          </button>
+          <button class="btn-table-action" onclick="window.logoutAdmin()">Salir</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top: 1.5rem;">
+      <!-- DASHBOARD / KPIS -->
+      <div class="admin-kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-number" id="kpiTotalProds">0</div>
+          <div class="kpi-label">Total en Firestore</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number" id="kpiAvailableProds" style="color: var(--status-available);">0</div>
+          <div class="kpi-label">Disponibles</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number" id="kpiSoldOutProds" style="color: var(--status-soldout);">0</div>
+          <div class="kpi-label">Agotados</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number" id="kpiUpcomingProds" style="color: var(--status-upcoming);">0</div>
+          <div class="kpi-label">Próximamente</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number" id="kpiActiveProds">0</div>
+          <div class="kpi-label">Activos en Web</div>
+        </div>
+      </div>
+
+      <!-- Barra de Herramientas de Administrador -->
+      <div class="admin-toolbar-row">
+        <div class="admin-actions-flex">
+          <button class="btn-luxury-primary" onclick="window.openPerfumeFormModal(null)">
+            + AGREGAR PERFUME
+          </button>
+          <button class="btn-luxury-primary" onclick="window.triggerDownloadPdfCatalog()" title="Genera el catálogo limpio en PDF listo para imprimir o compartir">
+            DESCARGAR CATÁLOGO PDF
+          </button>
+          <button class="btn-luxury-outline" onclick="window.openBrandIdentityModal()">
+            IDENTIDAD DE MARCA
+          </button>
+          <button class="btn-luxury-outline" onclick="window.openFirebaseSettingsModal()">
+            CONEXIÓN FIREBASE
+          </button>
+        </div>
+
+        <div style="font-size: 0.76rem; color: var(--color-muted);">
+          Almacenamiento: <strong style="color:#fff;">Cloud Firestore + Storage</strong>
+        </div>
+      </div>
+
+      <!-- Tabla de Perfumes -->
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Foto Principal</th>
+              <th>Perfume</th>
+              <th>Marca</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Fotos</th>
+              <th>Género</th>
+              <th>Visibilidad</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="adminProductsTableBody">
+            <tr>
+              <td colspan="9" style="text-align:center; padding:2rem; color:var(--color-muted);">Sincronizando productos...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="perfumeCrudModal" onclick="window.closePerfumeFormModal(event)">
+    <div class="modal-box" style="max-width: 860px; padding: 2.2rem;" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="window.closePerfumeFormModal()">✕</button>
+      <h3 style="font-size: 1.4rem; margin-bottom: 0.3rem;" id="crudModalTitle">Agregar Perfume</h3>
+      <p style="font-size: 0.8rem; color: var(--color-muted); margin-bottom: 1.5rem;">
+        Los datos se almacenarán directamente en Cloud Firestore y las imágenes en Firebase Storage.
+      </p>
+
+      <form id="crudPerfumeForm" onsubmit="window.savePerfumeFormSubmit(event)">
+        <input type="hidden" id="formProdId">
+
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label class="form-label">Nombre del Perfume *</label>
+            <input type="text" id="formName" class="form-input" required placeholder="Ej: Bade'e Al Oud Honor & Glory">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Marca / Casa *</label>
+            <input type="text" id="formBrand" class="form-input" required placeholder="Ej: Lattafa">
+          </div>
+        </div>
+
+        <div class="form-row form-row-3">
+          <div class="form-group">
+            <label class="form-label">Precio Actual (S/) *</label>
+            <input type="number" step="0.01" id="formPrice" class="form-input" required placeholder="180.00">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Precio Anterior (Opcional)</label>
+            <input type="number" step="0.01" id="formPriceOld" class="form-input" placeholder="220.00">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Código / Referencia</label>
+            <input type="text" id="formRef" class="form-input" placeholder="AF-LAT-007">
+          </div>
+        </div>
+
+        <div class="form-row form-row-3">
+          <div class="form-group">
+            <label class="form-label">Estado de Stock</label>
+            <select id="formStock" class="form-select">
+              <option value="Disponible">Disponible</option>
+              <option value="Agotado">Agotado</option>
+              <option value="Próximamente">Próximamente</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Género</label>
+            <select id="formGender" class="form-select">
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Etiqueta Destacada</label>
+            <select id="formTag" class="form-select">
+              <option value="Ninguna">Ninguna</option>
+              <option value="Nuevo">Nuevo</option>
+              <option value="Exclusivo">Exclusivo</option>
+              <option value="Más vendido">Más vendido</option>
+              <option value="Oferta">Oferta</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row form-row-3">
+          <div class="form-group">
+            <label class="form-label">Familia Olfativa</label>
+            <input type="text" id="formFamily" class="form-input" placeholder="Gourmand · Especiado · Ambarado">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Duración Estimada</label>
+            <input type="text" id="formDuration" class="form-input" placeholder="10 - 14 Horas">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Proyección / Estela</label>
+            <input type="text" id="formSillage" class="form-input" placeholder="Fuerte y envolvente">
+          </div>
+        </div>
+
+        <div class="form-row form-row-3">
+          <div class="form-group">
+            <label class="form-label">Notas de Salida</label>
+            <input type="text" id="formNotesTop" class="form-input" placeholder="Crema de piña, Brûlée">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notas de Corazón</label>
+            <input type="text" id="formNotesHeart" class="form-input" placeholder="Canela, Benjuí, Cúrcuma">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notas de Fondo</label>
+            <input type="text" id="formNotesBase" class="form-input" placeholder="Vainilla, Cachemira, Sándalo">
+          </div>
+        </div>
+
+        <!-- SECCIÓN: FOTOS DEL PERFUME (MÚLTIPLES FOTOS) -->
+        <div class="form-group">
+          <label class="form-label">FOTOS DEL PERFUME (Sube varias imágenes desde tu celular o PC a Firebase Storage)</label>
+          <div class="photo-manager-box">
+            <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+              <label class="btn-luxury-primary" style="cursor: pointer; margin: 0; padding: 0.75rem 1.4rem; font-size: 0.75rem;">
+                + AGREGAR FOTOS
+                <input type="file" multiple accept="image/*" onchange="window.handleMultiplePhotosUpload(event)" style="display: none;">
+              </label>
+              <span style="font-size: 0.75rem; color: var(--color-muted);">
+                Marca con ⭐ la que desees como Foto Principal para catálogo y PDF.
+              </span>
+            </div>
+
+            <div class="upload-progress-container" id="uploadProgressBarWrap">
+              <div class="upload-progress-bar" id="uploadProgressBar"></div>
+            </div>
+
+            <!-- Miniaturas con control de Principal y Eliminar -->
+            <div class="photo-manager-grid" id="formPhotoManagerGrid"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Descripción</label>
+          <textarea id="formDesc" class="form-textarea" rows="3" placeholder="Describe el carácter, ocasiones de uso y magnetismo de este perfume..."></textarea>
+        </div>
+
+        <div class="form-group" style="display: flex; flex-direction: row; align-items: center; gap: 0.6rem; margin-top: 0.5rem;">
+          <input type="checkbox" id="formIsActive" checked style="width:18px; height:18px; accent-color:#ffffff; cursor:pointer;">
+          <label for="formIsActive" class="form-label" style="margin-bottom:0; cursor:pointer;">
+            Producto Activo (Visible en el catálogo público)
+          </label>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.8rem; margin-top: 1.5rem;">
+          <button type="button" class="btn-luxury-outline" onclick="window.closePerfumeFormModal()">Cancelar</button>
+          <button type="submit" id="btnSavePerfumeSubmit" class="btn-luxury-primary">Guardar en Firebase</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="brandIdentityModal" onclick="window.closeBrandIdentityModal(event)">
+    <div class="modal-box" style="max-width: 680px; padding: 2.2rem;" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="window.closeBrandIdentityModal()">✕</button>
+      <h3 style="font-size: 1.35rem; margin-bottom: 0.3rem;">IDENTIDAD DE MARCA</h3>
+      <p style="font-size: 0.78rem; color: var(--color-muted); margin-bottom: 1.6rem;">
+        Modifica el logo oficial, slogan, WhatsApp y textos principales. Se guardan en Firestore y se reflejan en tiempo real para todos los clientes sin tocar el código.
+      </p>
+
+      <form onsubmit="window.saveBrandIdentitySubmit(event)">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg-surface-elevated); border: 1px dashed var(--border-subtle); border-radius: var(--radius-md); padding: 1.8rem; margin-bottom: 1.5rem;">
+          <span class="form-label" style="margin-bottom: 0.8rem;">LOGO OFICIAL DE AROMA FORAJIDO</span>
+          
+          <div style="width: 130px; height: 130px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.4); overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; box-shadow: 0 0 25px rgba(255,255,255,0.1);">
+            <img id="identityLogoPreview" src="" alt="Vista previa del logo" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+            <div id="identityLogoPlaceholder" style="text-align: center; padding: 0.8rem; font-size: 0.75rem; color: var(--color-muted);">
+              <b>Logo de Aroma Forajido</b><br>
+              <span style="font-size: 0.68rem;">Sin imagen subida</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center;">
+            <label class="btn-luxury-primary" style="cursor: pointer; margin: 0; padding: 0.75rem 1.4rem; font-size: 0.75rem;">
+              SUBIR / CAMBIAR LOGO A STORAGE
+              <input type="file" accept="image/png, image/jpeg, image/jpg, image/webp" onchange="window.handleBrandLogoUpload(event)" style="display: none;">
+            </label>
+            <button type="button" class="btn-luxury-outline" onclick="window.removeBrandLogo()" style="padding: 0.75rem 1.4rem; font-size: 0.75rem;">
+              Restablecer Logo
+            </button>
+          </div>
+        </div>
+
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label class="form-label">Nombre de Marca</label>
+            <input type="text" id="cfgBrandName" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Moneda</label>
+            <input type="text" id="cfgCurrency" class="form-input" placeholder="S/">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Eslogan Oficial</label>
+          <input type="text" id="cfgTagline" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Texto Principal Hero</label>
+          <input type="text" id="cfgHeroDesc" class="form-input" placeholder="Fragancias árabes seleccionadas para quienes...">
+        </div>
+
+        <div class="form-row form-row-3">
+          <div class="form-group">
+            <label class="form-label">WhatsApp (Con código de país)</label>
+            <input type="text" id="cfgWhatsapp" class="form-input" placeholder="519XXXXXXXX">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Instagram</label>
+            <input type="text" id="cfgInstagram" class="form-input" placeholder="@aroma_forajido">
+          </div>
+          <div class="form-group">
+            <label class="form-label">TikTok</label>
+            <input type="text" id="cfgTiktok" class="form-input" placeholder="@aroma_forajido">
+          </div>
+        </div>
+
+        <div class="form-row form-row-2">
+          <div class="form-group">
+            <label class="form-label">Métodos de Pago</label>
+            <input type="text" id="cfgPayments" class="form-input" placeholder="Yape, Plin, Transferencia bancaria">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Información de Envíos</label>
+            <input type="text" id="cfgShipping" class="form-input" placeholder="Envíos discretos y protegidos...">
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.8rem; margin-top: 1.5rem;">
+          <button type="button" class="btn-luxury-outline" onclick="window.closeBrandIdentityModal()">Cancelar</button>
+          <button type="submit" id="btnSaveBrandSubmit" class="btn-luxury-primary">Guardar en Firestore</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="firebaseSettingsModal" onclick="window.closeFirebaseSettingsModal(event)">
+    <div class="modal-box" style="max-width: 620px; padding: 2.2rem;" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="window.closeFirebaseSettingsModal()">✕</button>
+      <h3 style="font-size: 1.35rem; margin-bottom: 0.3rem;">Credenciales de Firebase</h3>
+      <p style="font-size: 0.78rem; color: var(--color-muted); margin-bottom: 1.5rem;">
+        Puedes inspeccionar o actualizar la configuración de tu proyecto Firebase (apiKey, authDomain, projectId, storageBucket).
+      </p>
+
+      <form onsubmit="window.saveFirebaseConfigSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Firebase Config JSON</label>
+          <textarea id="firebaseConfigJsonInput" class="form-textarea" rows="10" style="font-family: monospace; font-size: 0.78rem;" placeholder='{\n  "apiKey": "...",\n  "authDomain": "...",\n  "projectId": "...",\n  "storageBucket": "...",\n  "messagingSenderId": "...",\n  "appId": "..."\n}'></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+          <button type="button" class="btn-table-action" onclick="window.loadDefaultFirebaseConfig()">Restablecer</button>
+          <div style="display: flex; gap: 0.8rem;">
+            <button type="button" class="btn-luxury-outline" onclick="window.closeFirebaseSettingsModal()">Cancelar</button>
+            <button type="submit" class="btn-luxury-primary">Guardar y Reconectar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="deleteConfirmModal">
+    <div class="modal-box" style="max-width: 440px; padding: 2.2rem; text-align: center;">
+      <h3 style="color: var(--status-soldout); font-size: 1.3rem; margin-bottom: 0.6rem;">¿Eliminar Perfume?</h3>
+      <p style="font-size: 0.85rem; color: var(--color-silver); margin-bottom: 1.6rem;" id="deleteConfirmMessage">
+        Esta acción eliminará permanentemente la ficha de Cloud Firestore.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 0.9rem;">
+        <button class="btn-luxury-outline" onclick="window.closeDeleteConfirmModal()">Cancelar</button>
+        <button class="btn-luxury-primary" style="background: var(--status-soldout); color: #ffffff; border-color: var(--status-soldout);" onclick="window.executeDeleteConfirmed()">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVISO TOAST FLOTANTE -->
+  <div class="toast-box" id="systemToast">
+    <span id="systemToastMsg">Notificación</span>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { 
+      getAuth, 
+      signInWithEmailAndPassword, 
+      signOut, 
+      onAuthStateChanged,
+      signInAnonymously,
+      signInWithCustomToken
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { 
+      getFirestore, 
+      collection, 
+      doc, 
+      getDocs, 
+      getDoc, 
+      setDoc, 
+      updateDoc, 
+      deleteDoc, 
+      onSnapshot 
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { 
+      getStorage, 
+      ref as storageRef, 
+      uploadBytesResumable, 
+      getDownloadURL 
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
+
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'aroma-forajido';
+    
+    // Obtenemos la configuración de Firebase inyectada o del localStorage
+    const savedConfig = localStorage.getItem('af_firebase_custom_config');
+    let firebaseConfig = null;
+
+    if (savedConfig) {
+      try {
+        firebaseConfig = JSON.parse(savedConfig);
+      } catch (e) {
+        console.warn('Error parsing custom config, falling back', e);
+      }
+    }
+
+    if (!firebaseConfig) {
+      if (typeof __firebase_config !== 'undefined') {
+        try {
+          firebaseConfig = JSON.parse(__firebase_config);
+        } catch(e) {
+          firebaseConfig = null;
+        }
+      }
+    }
+
+    // Configuración oficial y vinculada de Aroma Forajido
+    if (!firebaseConfig || !firebaseConfig.apiKey) {
+      firebaseConfig = {
+        apiKey: "AIzaSyClumeIZwuhsZsTHMwhsjvHUnTHF66GLl8",
+        authDomain: "aroma-forajido.firebaseapp.com",
+        projectId: "aroma-forajido",
+        storageBucket: "aroma-forajido.firebasestorage.app",
+        messagingSenderId: "740182759945",
+        appId: "1:740182759945:web:1585bc175b0b9a574776d0",
+        measurementId: "G-X5936FH388"
+      };
+    }
+
+    // Inicializar Firebase
+    let app, auth, db, storage;
+    try {
+      app = initializeApp(firebaseConfig);
+      auth = getAuth(app);
+      db = getFirestore(app);
+      storage = getStorage(app);
+    } catch (err) {
+      console.error("Firebase initialization:", err);
+    }
+
+    const DEFAULT_CONFIG = {
+      brandName: "AROMA FORAJIDO",
+      tagline: "Rarezas únicas al alcance de quienes saben elegir.",
+      heroDesc: "Fragancias árabes seleccionadas para quienes no buscan encajar, sino marcar presencia. Proyección voraz, fijación duradera y autenticidad garantizada.",
+      currency: "S/",
+      whatsapp: "519XXXXXXXX",
+      instagram: "@aroma_forajido",
+      tiktok: "@aroma_forajido",
+      payments: "Yape, Plin, Transferencia Bancaria",
+      shipping: "Envíos discretos y protegidos a nivel nacional con empaque de alta seguridad.",
+      customLogo: ""
+    };
+
+    const DEMO_PERFUMES = [
+      {
+        id: "demo-badee-honor",
+        name: "BADE'E AL OUD (Honor & Glory)",
+        brand: "Lattafa",
+        price: 185.00,
+        priceOld: 220.00,
+        ref: "AF-LAT-001",
+        stock: "Disponible",
+        gender: "Unisex",
+        tag: "Exclusivo",
+        family: "Gourmand · Frutal · Especiado Cálido",
+        notesTop: "Crema de piña, Brûlée caramelizado",
+        notesHeart: "Benjuí, Canela, Cúrcuma, Pimienta negra",
+        notesBase: "Vainilla Bourbon, Sándalo, Cachemira, Musgo",
+        duration: "10 - 12 Horas",
+        sillage: "Pesada y Magnética",
+        desc: "El elixir blanco y dorado de Lattafa. Una apertura adictiva de piña glaseada y especias que evoluciona hacia una base suntuosa y cremosa de maderas selectas.",
+        isActive: true,
+        images: [
+          "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80"
+        ]
+      },
+      {
+        id: "demo-afnan-9pm",
+        name: "9 PM",
+        brand: "Afnan",
+        price: 175.00,
+        priceOld: 210.00,
+        ref: "AF-AFN-002",
+        stock: "Disponible",
+        gender: "Masculino",
+        tag: "Más vendido",
+        family: "Ámbar Vainilla Dulce",
+        notesTop: "Manzana salvaje, Canela, Lavanda silvestre, Bergamota",
+        notesHeart: "Flor de azahar de naranjo, Lirio de los valles",
+        notesBase: "Vainilla rica, Haba tonka, Ámbar gris, Pachulí",
+        duration: "10 - 14 Horas",
+        sillage: "Enorme estela nocturna",
+        desc: "La bestia nocturna de los cumplidos. Manzana caramelizada y canela con una cremosidad dulce irresistible diseñada para destacar en cualquier ambiente.",
+        isActive: true,
+        images: [
+          "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1588405748480-1cf414c89329?auto=format&fit=crop&w=700&q=80"
+        ]
+      },
+      {
+        id: "demo-lattafa-yara",
+        name: "YARA PINK",
+        brand: "Lattafa",
+        price: 140.00,
+        priceOld: 170.00,
+        ref: "AF-LAT-004",
+        stock: "Disponible",
+        gender: "Femenino",
+        tag: "Nuevo",
+        family: "Ámbar Floral Gourmand",
+        notesTop: "Heliotropo, Orquídea silvestre, Mandarina",
+        notesHeart: "Acorde Gourmand dulce, Frutas tropicales",
+        notesBase: "Vainilla esponjosa, Almizcle, Sándalo cremoso",
+        duration: "8 - 10 Horas",
+        sillage: "Suave a Moderada envolvente",
+        desc: "Postre cremoso de fresas y vainilla fina. Una de las fragancias femeninas árabes más elogiadas por su carácter suave, femenino y sumamente adictivo.",
+        isActive: true,
+        images: [
+          "https://images.unsplash.com/photo-1588405748480-1cf414c89329?auto=format&fit=crop&w=700&q=80"
+        ]
+      }
+    ];
+
+    let currentAppConfig = { ...DEFAULT_CONFIG };
+    let perfumesList = [];
+    let currentUser = null;
+    let activeGenderFilter = "all";
+    let activeSearchString = "";
+    let activeSelectedPerfume = null;
+    let pendingDeleteId = null;
+
+    let currentFormPhotos = [];
+    let currentGalleryPhotos = [];
+    let currentGalleryIndex = 0;
+
+    // Helper de colección de Firestore bajo el path estricto de la plataforma
+    const perfumesColRef = collection(db, 'artifacts', appId, 'public', 'data', 'perfumes');
+    const configDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'configuracion', 'general');
+
+    async function initAuthAndSubscriptions() {
+      // 1. Manejo inicial de autenticación
+      if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+        try {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } catch (e) {
+          console.warn("Fallback to anonymous auth", e);
+          await signInAnonymously(auth).catch(() => {});
+        }
+      } else {
+        // En preview sin token, asegurar sesión anónima para lectura fluida
+        if (!auth.currentUser) {
+          try {
+            await signInAnonymously(auth);
+          } catch (e) {
+            console.debug("Anonymous auth optional/skipped:", e);
+          }
+        }
+      }
+
+      // Escuchar cambios de Auth
+      onAuthStateChanged(auth, (user) => {
+        currentUser = user;
+        const statusPill = document.getElementById("adminCloudStatusPill");
+        const emailDisplay = document.getElementById("adminUserEmailDisplay");
+
+        if (user && !user.isAnonymous) {
+          if (statusPill) statusPill.innerHTML = `<span style="width:6px; height:6px; border-radius:50%; background:#2ecc71;"></span> Firebase Autenticado`;
+          if (emailDisplay) emailDisplay.textContent = user.email || 'Administrador Verificado';
+        } else {
+          if (statusPill) statusPill.innerHTML = `<span style="width:6px; height:6px; border-radius:50%; background:#f39c12;"></span> Modo Visualización`;
+          if (emailDisplay) emailDisplay.textContent = 'Sin sesión administrativa activa';
+        }
+      });
+
+      // 2. Suscripción en Tiempo Real a Configuración de Marca en Firestore
+      onSnapshot(configDocRef, (snap) => {
+        if (snap.exists()) {
+          currentAppConfig = { ...DEFAULT_CONFIG, ...snap.data() };
+        } else {
+          // Si no existe, guardar configuración por defecto en Firestore
+          setDoc(configDocRef, DEFAULT_CONFIG).catch(() => {});
+          currentAppConfig = { ...DEFAULT_CONFIG };
+        }
+        applyConfigToInterface();
+        applyBrandLogoToInterface();
+      }, (err) => {
+        console.warn("Firestore config snapshot error, using cached config:", err);
+        applyConfigToInterface();
+        applyBrandLogoToInterface();
+      });
+
+      // 3. Suscripción en Tiempo Real al Catálogo de Perfumes
+      onSnapshot(perfumesColRef, (snapshot) => {
+        if (!snapshot.empty) {
+          perfumesList = snapshot.docs.map(doc => {
+            const data = doc.data();
+            let imgs = Array.isArray(data.images) ? data.images : (data.image ? [data.image] : []);
+            return {
+              id: doc.id,
+              ...data,
+              images: imgs
+            };
+          });
+        } else {
+          // Si Firestore está vacío, pre-cargar productos demostrativos
+          seedInitialFirestoreProducts();
+        }
+        renderAllViews();
+      }, (err) => {
+        console.warn("Firestore perfumes snapshot error:", err);
+        if (perfumesList.length === 0) {
+          perfumesList = [...DEMO_PERFUMES];
+          renderAllViews();
+        }
+      });
+    }
+
+    async function seedInitialFirestoreProducts() {
+      try {
+        for (const item of DEMO_PERFUMES) {
+          const itemRef = doc(perfumesColRef, item.id);
+          await setDoc(itemRef, item);
+        }
+      } catch (e) {
+        console.debug("Auto-seed demo products skipped or permitted by rules");
+      }
+    }
+
+    function applyBrandLogoToInterface() {
+      const hasLogo = !!currentAppConfig.customLogo;
+      const logoTargets = document.querySelectorAll(".brandLogoImg");
+      const fallbackTargets = document.querySelectorAll(".brandLogoFallbackMsg");
+
+      if (hasLogo) {
+        logoTargets.forEach(img => {
+          img.src = currentAppConfig.customLogo;
+          img.style.display = "block";
+        });
+        fallbackTargets.forEach(el => {
+          el.style.display = "none";
+        });
+      } else {
+        logoTargets.forEach(img => {
+          img.src = "";
+          img.style.display = "none";
+        });
+        fallbackTargets.forEach(el => {
+          el.style.display = "block";
+        });
+      }
+
+      const previewImg = document.getElementById("identityLogoPreview");
+      const previewPh = document.getElementById("identityLogoPlaceholder");
+      if (previewImg && previewPh) {
+        if (hasLogo) {
+          previewImg.src = currentAppConfig.customLogo;
+          previewImg.style.display = "block";
+          previewPh.style.display = "none";
+        } else {
+          previewImg.src = "";
+          previewImg.style.display = "none";
+          previewPh.style.display = "block";
+        }
+      }
+    }
+
+    function applyConfigToInterface() {
+      document.title = `${currentAppConfig.brandName} | Colección Privada`;
+
+      document.querySelectorAll(".brandNameTarget").forEach(el => el.textContent = currentAppConfig.brandName);
+      document.querySelectorAll(".brandTaglineTarget").forEach(el => el.textContent = `"${currentAppConfig.tagline}"`);
+      document.querySelectorAll(".printBrandNameTarget").forEach(el => el.textContent = currentAppConfig.brandName);
+      document.querySelectorAll(".printTaglineTarget").forEach(el => el.textContent = `"${currentAppConfig.tagline}"`);
+
+      const heroDesc = document.getElementById("heroDescText");
+      if (heroDesc) heroDesc.textContent = currentAppConfig.heroDesc || DEFAULT_CONFIG.heroDesc;
+
+      const ftWa = document.getElementById("footerTextWhatsapp");
+      if (ftWa) ftWa.textContent = currentAppConfig.whatsapp;
+      const prWa = document.getElementById("printPdfWa");
+      if (prWa) prWa.textContent = currentAppConfig.whatsapp;
+
+      const ftIg = document.getElementById("footerTextInstagram");
+      if (ftIg) ftIg.textContent = currentAppConfig.instagram;
+      const lkIg = document.getElementById("footerLinkInstagram");
+      if (lkIg) lkIg.href = `https://instagram.com/${(currentAppConfig.instagram || '').replace('@', '')}`;
+
+      const ftTt = document.getElementById("footerTextTiktok");
+      if (ftTt) ftTt.textContent = currentAppConfig.tiktok;
+      const lkTt = document.getElementById("footerLinkTiktok");
+      if (lkTt) lkTt.href = `https://tiktok.com/@${(currentAppConfig.tiktok || '').replace('@', '')}`;
+
+      const ftPay = document.getElementById("footerTextPayments");
+      if (ftPay) ftPay.textContent = currentAppConfig.payments;
+
+      const ftShip = document.getElementById("footerTextShipping");
+      if (ftShip) ftShip.textContent = currentAppConfig.shipping;
+    }
+
+    function renderAllViews() {
+      renderClientCatalogCards();
+      renderAdminTableRows();
+      updateAdminDashboardKPIs();
+      initHeroAndCardTilt3D();
+    }
+
+    function updateAdminDashboardKPIs() {
+      const total = perfumesList.length;
+      const avail = perfumesList.filter(p => p.stock === "Disponible").length;
+      const sold = perfumesList.filter(p => p.stock === "Agotado").length;
+      const upcoming = perfumesList.filter(p => p.stock === "Próximamente").length;
+      const active = perfumesList.filter(p => p.isActive !== false).length;
+
+      const elTot = document.getElementById("kpiTotalProds");
+      if (elTot) elTot.textContent = total;
+      const elAv = document.getElementById("kpiAvailableProds");
+      if (elAv) elAv.textContent = avail;
+      const elSd = document.getElementById("kpiSoldOutProds");
+      if (elSd) elSd.textContent = sold;
+      const elUp = document.getElementById("kpiUpcomingProds");
+      if (elUp) elUp.textContent = upcoming;
+      const elAc = document.getElementById("kpiActiveProds");
+      if (elAc) elAc.textContent = active;
+    }
+
+    function getPrimaryPhoto(prod) {
+      if (prod.images && prod.images.length > 0 && prod.images[0]) {
+        return prod.images[0];
+      }
+      return currentAppConfig.customLogo || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%23111'/><text x='100' y='105' fill='%23777' font-size='14' text-anchor='middle'>AROMA FORAJIDO</text></svg>";
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function getStatusBadgeHtml(status) {
+      if (status === "Disponible") {
+        return `<span class="status-badge status-disponible">✓ DISPONIBLE</span>`;
+      } else if (status === "Agotado") {
+        return `<span class="status-badge status-agotado">✕ AGOTADO</span>`;
+      } else {
+        return `<span class="status-badge status-proximamente">PRÓXIMAMENTE</span>`;
+      }
+    }
+
+    function buildPerfumeCardHtml(prod) {
+      const statusBadge = getStatusBadgeHtml(prod.stock);
+      const tagHtml = (prod.tag && prod.tag !== "Ninguna") ? `<span class="card-tag-badge">${escapeHtml(prod.tag)}</span>` : "";
+      const priceOldHtml = prod.priceOld ? `<span class="card-price-old">${currentAppConfig.currency} ${Number(prod.priceOld).toFixed(2)}</span>` : "";
+      const primaryPhoto = getPrimaryPhoto(prod);
+
+      return `
+        <div class="card-3d-anchor">
+          <div class="perfume-card" data-tilt>
+            ${tagHtml}
+            <span class="card-gender-badge">${escapeHtml(prod.gender || "Unisex")}</span>
+
+            <div class="card-photo-box">
+              <img src="${escapeHtml(primaryPhoto)}" alt="${escapeHtml(prod.name)}" loading="lazy">
+            </div>
+
+            <div class="card-body">
+              <div>
+                <span class="card-brand">${escapeHtml(prod.brand)}</span>
+                <h3 class="card-title">${escapeHtml(prod.name)}</h3>
+                <p class="card-family">${escapeHtml(prod.family || 'Fragancia Árabe')}</p>
+
+                <div class="card-print-details">
+                  ${prod.notesTop ? `<div><b>Salida:</b> ${escapeHtml(prod.notesTop)}</div>` : ''}
+                  ${prod.notesHeart ? `<div><b>Corazón:</b> ${escapeHtml(prod.notesHeart)}</div>` : ''}
+                  ${prod.notesBase ? `<div><b>Fondo:</b> ${escapeHtml(prod.notesBase)}</div>` : ''}
+                  ${prod.desc ? `<div style="margin-top:4px; font-style:italic;">${escapeHtml(prod.desc)}</div>` : ''}
+                </div>
+              </div>
+
+              <div>
+                <div class="card-meta">
+                  <div class="card-price-group">
+                    ${priceOldHtml}
+                    <span class="card-price-current">${currentAppConfig.currency} ${Number(prod.price).toFixed(2)}</span>
+                  </div>
+                  <div>
+                    ${statusBadge}
+                  </div>
+                </div>
+
+                <button class="btn-view-card" onclick="window.openPerfumeDetailModal('${prod.id}')">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  <span>Ver Perfume</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderClientCatalogCards() {
+      const container = document.getElementById("catalogCardsContainer");
+      if (!container) return;
+
+      const q = activeSearchString.toLowerCase().trim();
+
+      // En catálogo público sólo mostramos los perfumes marcados como activos
+      const visibleProducts = perfumesList.filter(prod => prod.isActive !== false);
+
+      const filtered = visibleProducts.filter(prod => {
+        if (activeGenderFilter === "Masculino" && prod.gender !== "Masculino") return false;
+        if (activeGenderFilter === "Femenino" && prod.gender !== "Femenino") return false;
+        if (activeGenderFilter === "Unisex" && prod.gender !== "Unisex") return false;
+        if (activeGenderFilter === "Disponible" && prod.stock !== "Disponible") return false;
+        if (activeGenderFilter === "Agotado" && prod.stock !== "Agotado") return false;
+        if (activeGenderFilter === "Próximamente" && prod.stock !== "Próximamente") return false;
+
+        if (q) {
+          const haystack = `${prod.name} ${prod.brand} ${prod.family} ${prod.gender} ${prod.ref} ${prod.notesTop} ${prod.notesHeart} ${prod.notesBase}`.toLowerCase();
+          if (!haystack.includes(q)) return false;
+        }
+
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 4.5rem 1rem; color: var(--color-muted);">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom: 1rem; opacity: 0.4;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <h4 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 0.4rem;">No se encontraron perfumes</h4>
+            <p style="font-size: 0.85rem;">Prueba modificando los filtros o el término de búsqueda ingresado.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(prod => buildPerfumeCardHtml(prod)).join("");
+    }
+
+    function renderAdminTableRows() {
+      const tbody = document.getElementById("adminProductsTableBody");
+      if (!tbody) return;
+
+      if (perfumesList.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; color: var(--color-muted); padding: 2.5rem;">No hay perfumes en Cloud Firestore. Pulsa "+ AGREGAR PERFUME".</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = perfumesList.map(prod => {
+        const primaryPhoto = getPrimaryPhoto(prod);
+        const photoCount = prod.images ? prod.images.length : 0;
+        const isAct = prod.isActive !== false;
+
+        return `
+          <tr>
+            <td>
+              <img src="${escapeHtml(primaryPhoto)}" alt="${escapeHtml(prod.name)}" class="table-perfume-thumb">
+            </td>
+            <td>
+              <strong>${escapeHtml(prod.name)}</strong>
+              <div style="font-size: 0.72rem; color: var(--color-muted);">Ref: ${escapeHtml(prod.ref || 'N/A')}</div>
+            </td>
+            <td>${escapeHtml(prod.brand)}</td>
+            <td><b>${currentAppConfig.currency} ${Number(prod.price).toFixed(2)}</b></td>
+            <td>${getStatusBadgeHtml(prod.stock)}</td>
+            <td><span style="font-size: 0.75rem; color: #fff;">${photoCount} foto(s)</span></td>
+            <td>${escapeHtml(prod.gender || 'Unisex')}</td>
+            <td>
+              <button class="btn-table-action" onclick="window.toggleProductActive('${prod.id}', ${!isAct})" style="font-size:0.68rem; color:${isAct ? '#2ecc71' : '#e74c3c'}">
+                ${isAct ? '● Activo' : '○ Inactivo'}
+              </button>
+            </td>
+            <td>
+              <div style="display: flex; gap: 0.4rem;">
+                <button class="btn-table-action" onclick="window.openPerfumeFormModal('${prod.id}')" title="Modificar">Editar</button>
+                <button class="btn-table-action" onclick="window.duplicatePerfumeItem('${prod.id}')" title="Clonar">Duplicar</button>
+                <button class="btn-table-action btn-table-danger" onclick="window.promptDeletePerfume('${prod.id}')" title="Borrar">Eliminar</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function initHeroAndCardTilt3D() {
+      const cards = document.querySelectorAll(".perfume-card");
+      cards.forEach(card => {
+        card.removeEventListener("mousemove", handleCard3dMove);
+        card.removeEventListener("mouseleave", handleCard3dLeave);
+        card.addEventListener("mousemove", handleCard3dMove);
+        card.addEventListener("mouseleave", handleCard3dLeave);
+      });
+
+      const heroStage = document.querySelector(".hero-3d-stage");
+      const heroCard = document.getElementById("heroCard3d");
+      if (heroStage && heroCard) {
+        heroStage.addEventListener("mousemove", (e) => {
+          const rect = heroStage.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          heroCard.style.transform = `rotateY(${(x * 0.05).toFixed(2)}deg) rotateX(${(-y * 0.05).toFixed(2)}deg) translateY(-10px)`;
+        });
+
+        heroStage.addEventListener("mouseleave", () => {
+          heroCard.style.transform = "";
+        });
+      }
+    }
+
+    function handleCard3dMove(e) {
+      const card = e.currentTarget;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
+    }
+
+    function handleCard3dLeave(e) {
+      const card = e.currentTarget;
+      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+    }
+
+    function openPerfumeDetailModal(prodId) {
+      const prod = perfumesList.find(p => p.id === prodId);
+      if (!prod) return;
+
+      activeSelectedPerfume = prod;
+      currentGalleryPhotos = (prod.images && prod.images.length > 0) ? [...prod.images] : [getPrimaryPhoto(prod)];
+      currentGalleryIndex = 0;
+
+      updateGalleryView();
+
+      document.getElementById("detailBrand").textContent = prod.brand;
+      document.getElementById("detailName").textContent = prod.name;
+      document.getElementById("detailRef").textContent = prod.ref ? `REF / CÓDIGO: ${prod.ref}` : "";
+      document.getElementById("detailPrice").textContent = `${currentAppConfig.currency} ${Number(prod.price).toFixed(2)}`;
+
+      const oldPriceEl = document.getElementById("detailPriceOld");
+      if (prod.priceOld) {
+        oldPriceEl.textContent = `${currentAppConfig.currency} ${Number(prod.priceOld).toFixed(2)}`;
+        oldPriceEl.style.display = "inline";
+      } else {
+        oldPriceEl.style.display = "none";
+      }
+
+      document.getElementById("detailStatusBadge").innerHTML = getStatusBadgeHtml(prod.stock);
+      document.getElementById("detailNotesTop").textContent = prod.notesTop || "No especificadas";
+      document.getElementById("detailNotesHeart").textContent = prod.notesHeart || "No especificadas";
+      document.getElementById("detailNotesBase").textContent = prod.notesBase || "No especificadas";
+      document.getElementById("detailFamily").textContent = prod.family || "-";
+      document.getElementById("detailGender").textContent = prod.gender || "Unisex";
+      document.getElementById("detailDuration").textContent = prod.duration || "Alta Fijación";
+      document.getElementById("detailSillage").textContent = prod.sillage || "Notable";
+      document.getElementById("detailDesc").textContent = prod.desc || "Fragancia original seleccionada por Aroma Forajido.";
+
+      setupGalleryTouchSwipe();
+
+      const modal = document.getElementById("perfumeDetailModal");
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function updateGalleryView() {
+      const mainImg = document.getElementById("detailMainGalleryImg");
+      const thumbContainer = document.getElementById("galleryThumbnailsContainer");
+      if (!mainImg || !thumbContainer) return;
+
+      mainImg.classList.add("transitioning");
+      setTimeout(() => {
+        mainImg.src = currentGalleryPhotos[currentGalleryIndex] || "";
+        mainImg.classList.remove("transitioning");
+      }, 150);
+
+      thumbContainer.innerHTML = currentGalleryPhotos.map((photo, idx) => `
+        <div class="gallery-thumb-item ${idx === currentGalleryIndex ? 'active' : ''}" onclick="window.selectGalleryPhoto(${idx})">
+          <img src="${escapeHtml(photo)}" alt="Foto ${idx + 1}">
+        </div>
+      `).join("");
+    }
+
+    function selectGalleryPhoto(idx) {
+      if (idx >= 0 && idx < currentGalleryPhotos.length) {
+        currentGalleryIndex = idx;
+        updateGalleryView();
+      }
+    }
+
+    function nextGalleryImage() {
+      if (currentGalleryPhotos.length <= 1) return;
+      currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryPhotos.length;
+      updateGalleryView();
+    }
+
+    function prevGalleryImage() {
+      if (currentGalleryPhotos.length <= 1) return;
+      currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryPhotos.length) % currentGalleryPhotos.length;
+      updateGalleryView();
+    }
+
+    function setupGalleryTouchSwipe() {
+      const stage = document.getElementById("galleryStage");
+      if (!stage) return;
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      stage.ontouchstart = (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      };
+
+      stage.ontouchend = (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 45) {
+          nextGalleryImage();
+        } else if (touchEndX - touchStartX > 45) {
+          prevGalleryImage();
+        }
+      };
+    }
+
+    function closeDetailModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      const modal = document.getElementById("perfumeDetailModal");
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+      activeSelectedPerfume = null;
+    }
+
+    function orderCurrentPerfumeWhatsApp() {
+      if (!activeSelectedPerfume) return;
+      const msg = `Hola, Aroma Forajido. Estoy interesado en el perfume ${activeSelectedPerfume.name}. ¿Sigue disponible? Precio: ${currentAppConfig.currency} ${Number(activeSelectedPerfume.price).toFixed(2)}.`;
+      const cleanNum = (currentAppConfig.whatsapp || "").replace(/[^0-9]/g, "");
+      const url = `https://wa.me/${cleanNum}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    }
+
+    function openWhatsAppConsultGeneral() {
+      const msg = `Hola, Aroma Forajido. Quiero consultar la disponibilidad del catálogo de perfumes árabes.`;
+      const cleanNum = (currentAppConfig.whatsapp || "").replace(/[^0-9]/g, "");
+      const url = `https://wa.me/${cleanNum}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+    }
+
+    function handleFilterAndSearch() {
+      activeSearchString = document.getElementById("liveSearchInput").value;
+      renderClientCatalogCards();
+    }
+
+    function applyGenderFilter(filterKey, btnEl) {
+      activeGenderFilter = filterKey;
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      if (btnEl) btnEl.classList.add("active");
+      renderClientCatalogCards();
+    }
+
+    function scrollToSection(elementId) {
+      const el = document.getElementById(elementId);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function openAdminLoginModal() {
+      if (currentUser && !currentUser.isAnonymous) {
+        switchView("admin");
+        return;
+      }
+      document.getElementById("adminEmailInput").value = "";
+      document.getElementById("adminPassInput").value = "";
+      document.getElementById("adminAuthModal").classList.add("active");
+    }
+
+    function closeAdminLoginModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById("adminAuthModal").classList.remove("active");
+    }
+
+    async function handleAdminLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById("adminEmailInput").value.trim();
+      const pass = document.getElementById("adminPassInput").value;
+      const btn = document.getElementById("btnAdminLoginSubmit");
+
+      btn.disabled = true;
+      btn.textContent = "Verificando...";
+
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+        closeAdminLoginModal();
+        switchView("admin");
+        showToast("Sesión iniciada con Firebase Authentication");
+      } catch (error) {
+        console.error("Firebase Auth Error:", error);
+        let msg = "Error al autenticar: revisa credenciales";
+        if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
+          msg = "Correo o contraseña incorrectos.";
+        } else if (error.code === 'auth/user-not-found') {
+          msg = "Usuario no registrado en Firebase.";
+        }
+        showToast(msg);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Ingresar al Panel";
+      }
+    }
+
+    function switchView(targetMode) {
+      const client = document.getElementById("clientView");
+      const admin = document.getElementById("adminView");
+
+      if (targetMode === "admin") {
+        client.style.display = "none";
+        admin.style.display = "block";
+        window.scrollTo(0, 0);
+        renderAdminTableRows();
+        updateAdminDashboardKPIs();
+        history.pushState(null, "", "#admin");
+      } else {
+        admin.style.display = "none";
+        client.style.display = "block";
+        window.scrollTo(0, 0);
+        renderAllViews();
+        history.pushState(null, "", "#");
+      }
+    }
+
+    async function logoutAdmin() {
+      try {
+        await signOut(auth);
+        await signInAnonymously(auth).catch(() => {});
+        switchView("client");
+        showToast("Sesión administrativa cerrada");
+      } catch (err) {
+        switchView("client");
+      }
+    }
+
+    async function uploadFileToFirebaseStorage(file, folder = "perfumes") {
+      // Optimizador y compresor automático para almacenar en Firestore 100% GRATIS
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target.result;
+          img.onload = () => {
+            const canvas = document.createElement("canvas");
+            // Limitar dimensiones para catálogo de lujo ligero y nítido
+            const MAX_WIDTH = folder === "branding" ? 600 : 900;
+            const MAX_HEIGHT = folder === "branding" ? 600 : 900;
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height) {
+              if (width > MAX_WIDTH) {
+                height *= MAX_WIDTH / width;
+                width = MAX_WIDTH;
+              }
+            } else {
+              if (height > MAX_HEIGHT) {
+                width *= MAX_HEIGHT / height;
+                height = MAX_HEIGHT;
+              }
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+
+            // Calidad balanceada al 82% (alta nitidez y mínimo peso)
+            const compressedDataUrl = canvas.toDataURL("image/webp", 0.82);
+            resolve(compressedDataUrl);
+          };
+          img.onerror = (err) => reject(err);
+        };
+        reader.onerror = (err) => reject(err);
+      });
+    }
+
+    async function handleMultiplePhotosUpload(e) {
+      const files = Array.from(e.target.files);
+      if (!files || files.length === 0) return;
+
+      showToast(`Subiendo ${files.length} imagen(es) a Firebase Storage...`);
+      for (const file of files) {
+        try {
+          const url = await uploadFileToFirebaseStorage(file, "perfumes");
+          currentFormPhotos.push(url);
+          renderFormPhotoManagerGrid();
+        } catch (err) {
+          console.error("Upload error:", err);
+        }
+      }
+      showToast("Fotografías listas");
+      e.target.value = "";
+    }
+
+    function setPrimaryFormPhoto(index) {
+      if (index <= 0 || index >= currentFormPhotos.length) return;
+      const chosen = currentFormPhotos.splice(index, 1)[0];
+      currentFormPhotos.unshift(chosen);
+      renderFormPhotoManagerGrid();
+      showToast("Foto principal actualizada");
+    }
+
+    function removeFormPhoto(index) {
+      if (index >= 0 && index < currentFormPhotos.length) {
+        currentFormPhotos.splice(index, 1);
+        renderFormPhotoManagerGrid();
+        showToast("Fotografía removida");
+      }
+    }
+
+    function renderFormPhotoManagerGrid() {
+      const grid = document.getElementById("formPhotoManagerGrid");
+      if (!grid) return;
+
+      if (currentFormPhotos.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1 / -1; font-size: 0.78rem; color: var(--color-muted); padding: 0.6rem 0;">No has seleccionado ninguna fotografía aún. Pulsa "+ AGREGAR FOTOS".</div>`;
+        return;
+      }
+
+      grid.innerHTML = currentFormPhotos.map((photo, index) => {
+        const isPrimary = index === 0;
+        return `
+          <div class="photo-card-item ${isPrimary ? 'is-primary' : ''}">
+            <img src="${escapeHtml(photo)}" class="photo-card-preview" alt="Foto ${index + 1}">
+            <div class="photo-card-actions">
+              <button type="button" class="photo-btn-primary ${isPrimary ? 'active' : ''}" onclick="window.setPrimaryFormPhoto(${index})">
+                ${isPrimary ? '⭐ Principal' : 'Elegir Principal'}
+              </button>
+              <button type="button" class="photo-btn-delete" onclick="window.removeFormPhoto(${index})">
+                🗑 Eliminar
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function openPerfumeFormModal(prodId) {
+      const form = document.getElementById("crudPerfumeForm");
+      form.reset();
+      currentFormPhotos = [];
+
+      if (prodId) {
+        const prod = perfumesList.find(p => p.id === prodId);
+        if (!prod) return;
+        document.getElementById("crudModalTitle").textContent = "Editar Perfume en Firestore";
+        document.getElementById("formProdId").value = prod.id;
+        document.getElementById("formName").value = prod.name || "";
+        document.getElementById("formBrand").value = prod.brand || "";
+        document.getElementById("formPrice").value = prod.price || "";
+        document.getElementById("formPriceOld").value = prod.priceOld || "";
+        document.getElementById("formRef").value = prod.ref || "";
+        document.getElementById("formStock").value = prod.stock || "Disponible";
+        document.getElementById("formGender").value = prod.gender || "Masculino";
+        document.getElementById("formTag").value = prod.tag || "Ninguna";
+        document.getElementById("formFamily").value = prod.family || "";
+        document.getElementById("formDuration").value = prod.duration || "";
+        document.getElementById("formSillage").value = prod.sillage || "";
+        document.getElementById("formNotesTop").value = prod.notesTop || "";
+        document.getElementById("formNotesHeart").value = prod.notesHeart || "";
+        document.getElementById("formNotesBase").value = prod.notesBase || "";
+        document.getElementById("formDesc").value = prod.desc || "";
+        document.getElementById("formIsActive").checked = prod.isActive !== false;
+
+        currentFormPhotos = prod.images ? [...prod.images] : [];
+      } else {
+        document.getElementById("crudModalTitle").textContent = "Agregar Perfume a Firestore";
+        document.getElementById("formProdId").value = "";
+        document.getElementById("formIsActive").checked = true;
+      }
+
+      renderFormPhotoManagerGrid();
+      document.getElementById("perfumeCrudModal").classList.add("active");
+    }
+
+    function closePerfumeFormModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById("perfumeCrudModal").classList.remove("active");
+      currentFormPhotos = [];
+    }
+
+    async function savePerfumeFormSubmit(e) {
+      e.preventDefault();
+      const saveBtn = document.getElementById("btnSavePerfumeSubmit");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Sincronizando...";
+
+      const id = document.getElementById("formProdId").value;
+      const perfumeData = {
+        name: document.getElementById("formName").value.trim(),
+        brand: document.getElementById("formBrand").value.trim(),
+        price: parseFloat(document.getElementById("formPrice").value) || 0,
+        priceOld: parseFloat(document.getElementById("formPriceOld").value) || null,
+        ref: document.getElementById("formRef").value.trim(),
+        stock: document.getElementById("formStock").value,
+        gender: document.getElementById("formGender").value,
+        tag: document.getElementById("formTag").value,
+        family: document.getElementById("formFamily").value.trim(),
+        duration: document.getElementById("formDuration").value.trim(),
+        sillage: document.getElementById("formSillage").value.trim(),
+        notesTop: document.getElementById("formNotesTop").value.trim(),
+        notesHeart: document.getElementById("formNotesHeart").value.trim(),
+        notesBase: document.getElementById("formNotesBase").value.trim(),
+        desc: document.getElementById("formDesc").value.trim(),
+        isActive: document.getElementById("formIsActive").checked,
+        images: [...currentFormPhotos],
+        updatedAt: new Date().toISOString()
+      };
+
+      try {
+        if (id) {
+          const docRef = doc(perfumesColRef, id);
+          await updateDoc(docRef, perfumeData);
+          showToast(`Perfume "${perfumeData.name}" actualizado en Firestore`);
+        } else {
+          const newDocId = `prod-${Date.now()}`;
+          const newDocRef = doc(perfumesColRef, newDocId);
+          await setDoc(newDocRef, { ...perfumeData, id: newDocId });
+          showToast(`Perfume "${perfumeData.name}" publicado en la nube`);
+        }
+        closePerfumeFormModal();
+      } catch (err) {
+        console.error("Firestore Save Error:", err);
+        showToast("Error al guardar en Firestore: " + err.message);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Guardar en Firebase";
+      }
+    }
+
+    async function toggleProductActive(prodId, newStatus) {
+      try {
+        const docRef = doc(perfumesColRef, prodId);
+        await updateDoc(docRef, { isActive: newStatus });
+        showToast(newStatus ? "Producto visible en catálogo" : "Producto ocultado del catálogo");
+      } catch (e) {
+        showToast("Error al actualizar visibilidad");
+      }
+    }
+
+    async function duplicatePerfumeItem(prodId) {
+      const original = perfumesList.find(p => p.id === prodId);
+      if (!original) return;
+
+      const newId = `prod-${Date.now()}`;
+      const clone = {
+        ...original,
+        id: newId,
+        name: `${original.name} (Copia)`,
+        ref: original.ref ? `${original.ref}-CP` : "",
+        images: original.images ? [...original.images] : [],
+        updatedAt: new Date().toISOString()
+      };
+
+      try {
+        await setDoc(doc(perfumesColRef, newId), clone);
+        showToast(`Perfume duplicado: "${clone.name}"`);
+      } catch (e) {
+        showToast("Error al duplicar en Firestore");
+      }
+    }
+
+    function promptDeletePerfume(prodId) {
+      const prod = perfumesList.find(p => p.id === prodId);
+      if (!prod) return;
+
+      pendingDeleteId = prodId;
+      document.getElementById("deleteConfirmMessage").textContent = `¿Estás seguro de que deseas eliminar permanentemente "${prod.name}" (${prod.brand}) de Cloud Firestore?`;
+      document.getElementById("deleteConfirmModal").classList.add("active");
+    }
+
+    function closeDeleteConfirmModal() {
+      document.getElementById("deleteConfirmModal").classList.remove("active");
+      pendingDeleteId = null;
+    }
+
+    async function executeDeleteConfirmed() {
+      if (!pendingDeleteId) return;
+      try {
+        await deleteDoc(doc(perfumesColRef, pendingDeleteId));
+        closeDeleteConfirmModal();
+        showToast("Perfume eliminado de Cloud Firestore");
+      } catch (e) {
+        showToast("Error al eliminar de Firestore");
+      }
+    }
+
+    function openBrandIdentityModal() {
+      document.getElementById("cfgBrandName").value = currentAppConfig.brandName || "";
+      document.getElementById("cfgCurrency").value = currentAppConfig.currency || "S/";
+      document.getElementById("cfgTagline").value = currentAppConfig.tagline || "";
+      document.getElementById("cfgHeroDesc").value = currentAppConfig.heroDesc || "";
+      document.getElementById("cfgWhatsapp").value = currentAppConfig.whatsapp || "";
+      document.getElementById("cfgInstagram").value = currentAppConfig.instagram || "";
+      document.getElementById("cfgTiktok").value = currentAppConfig.tiktok || "";
+      document.getElementById("cfgPayments").value = currentAppConfig.payments || "";
+      document.getElementById("cfgShipping").value = currentAppConfig.shipping || "";
+
+      applyBrandLogoToInterface();
+      document.getElementById("brandIdentityModal").classList.add("active");
+    }
+
+    function closeBrandIdentityModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById("brandIdentityModal").classList.remove("active");
+    }
+
+    async function handleBrandLogoUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      showToast("Subiendo logo a Firebase Storage...");
+      try {
+        const logoUrl = await uploadFileToFirebaseStorage(file, "branding");
+        currentAppConfig.customLogo = logoUrl;
+        await setDoc(configDocRef, { customLogo: logoUrl }, { merge: true });
+        applyBrandLogoToInterface();
+        showToast("¡Logo actualizado en Firebase!");
+      } catch (err) {
+        showToast("Error al subir el logo");
+      }
+      e.target.value = "";
+    }
+
+    async function removeBrandLogo() {
+      try {
+        currentAppConfig.customLogo = "";
+        await setDoc(configDocRef, { customLogo: "" }, { merge: true });
+        applyBrandLogoToInterface();
+        showToast("Logo restablecido");
+      } catch (e) {
+        showToast("Error al restablecer logo");
+      }
+    }
+
+    async function saveBrandIdentitySubmit(e) {
+      e.preventDefault();
+      const saveBtn = document.getElementById("btnSaveBrandSubmit");
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Guardando...";
+
+      const updated = {
+        brandName: document.getElementById("cfgBrandName").value.trim() || currentAppConfig.brandName,
+        currency: document.getElementById("cfgCurrency").value.trim() || "S/",
+        tagline: document.getElementById("cfgTagline").value.trim() || currentAppConfig.tagline,
+        heroDesc: document.getElementById("cfgHeroDesc").value.trim() || currentAppConfig.heroDesc,
+        whatsapp: document.getElementById("cfgWhatsapp").value.trim() || currentAppConfig.whatsapp,
+        instagram: document.getElementById("cfgInstagram").value.trim() || currentAppConfig.instagram,
+        tiktok: document.getElementById("cfgTiktok").value.trim() || currentAppConfig.tiktok,
+        payments: document.getElementById("cfgPayments").value.trim() || currentAppConfig.payments,
+        shipping: document.getElementById("cfgShipping").value.trim() || currentAppConfig.shipping,
+        customLogo: currentAppConfig.customLogo || ""
+      };
+
+      try {
+        await setDoc(configDocRef, updated, { merge: true });
+        currentAppConfig = { ...currentAppConfig, ...updated };
+        applyConfigToInterface();
+        closeBrandIdentityModal();
+        showToast("Identidad de marca guardada en Firestore");
+      } catch (err) {
+        showToast("Error al guardar en Firestore");
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Guardar en Firestore";
+      }
+    }
+
+    function openFirebaseSettingsModal() {
+      document.getElementById("firebaseConfigJsonInput").value = JSON.stringify(firebaseConfig, null, 2);
+      document.getElementById("firebaseSettingsModal").classList.add("active");
+    }
+
+    function closeFirebaseSettingsModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById("firebaseSettingsModal").classList.remove("active");
+    }
+
+    function saveFirebaseConfigSubmit(e) {
+      e.preventDefault();
+      try {
+        const parsed = JSON.parse(document.getElementById("firebaseConfigJsonInput").value);
+        localStorage.setItem('af_firebase_custom_config', JSON.stringify(parsed));
+        showToast("Configuración guardada. Recargando...");
+        setTimeout(() => window.location.reload(), 800);
+      } catch (err) {
+        showToast("JSON inválido: verifica la sintaxis");
+      }
+    }
+
+    function loadDefaultFirebaseConfig() {
+      localStorage.removeItem('af_firebase_custom_config');
+      showToast("Configuración restablecida. Recargando...");
+      setTimeout(() => window.location.reload(), 800);
+    }
+
+    function triggerDownloadPdfCatalog() {
+      activeGenderFilter = "all";
+      activeSearchString = "";
+      renderClientCatalogCards();
+
+      const admin = document.getElementById("adminView");
+      const client = document.getElementById("clientView");
+
+      admin.style.display = "none";
+      client.style.display = "block";
+
+      showToast("Generando vista imprimible para PDF...");
+
+      setTimeout(() => {
+        window.print();
+        admin.style.display = "block";
+        client.style.display = "none";
+      }, 350);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("systemToast");
+      const text = document.getElementById("systemToastMsg");
+      text.textContent = msg;
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3500);
+    }
+
+    window.openPerfumeDetailModal = openPerfumeDetailModal;
+    window.closeDetailModal = closeDetailModal;
+    window.selectGalleryPhoto = selectGalleryPhoto;
+    window.nextGalleryImage = nextGalleryImage;
+    window.prevGalleryImage = prevGalleryImage;
+    window.orderCurrentPerfumeWhatsApp = orderCurrentPerfumeWhatsApp;
+    window.openWhatsAppConsultGeneral = openWhatsAppConsultGeneral;
+    window.handleFilterAndSearch = handleFilterAndSearch;
+    window.applyGenderFilter = applyGenderFilter;
+    window.scrollToSection = scrollToSection;
+    window.openAdminLoginModal = openAdminLoginModal;
+    window.closeAdminLoginModal = closeAdminLoginModal;
+    window.handleAdminLoginSubmit = handleAdminLoginSubmit;
+    window.switchView = switchView;
+    window.logoutAdmin = logoutAdmin;
+    window.openPerfumeFormModal = openPerfumeFormModal;
+    window.closePerfumeFormModal = closePerfumeFormModal;
+    window.handleMultiplePhotosUpload = handleMultiplePhotosUpload;
+    window.setPrimaryFormPhoto = setPrimaryFormPhoto;
+    window.removeFormPhoto = removeFormPhoto;
+    window.savePerfumeFormSubmit = savePerfumeFormSubmit;
+    window.toggleProductActive = toggleProductActive;
+    window.duplicatePerfumeItem = duplicatePerfumeItem;
+    window.promptDeletePerfume = promptDeletePerfume;
+    window.closeDeleteConfirmModal = closeDeleteConfirmModal;
+    window.executeDeleteConfirmed = executeDeleteConfirmed;
+    window.openBrandIdentityModal = openBrandIdentityModal;
+    window.closeBrandIdentityModal = closeBrandIdentityModal;
+    window.handleBrandLogoUpload = handleBrandLogoUpload;
+    window.removeBrandLogo = removeBrandLogo;
+    window.saveBrandIdentitySubmit = saveBrandIdentitySubmit;
+    window.openFirebaseSettingsModal = openFirebaseSettingsModal;
+    window.closeFirebaseSettingsModal = closeFirebaseSettingsModal;
+    window.saveFirebaseConfigSubmit = saveFirebaseConfigSubmit;
+    window.loadDefaultFirebaseConfig = loadDefaultFirebaseConfig;
+    window.triggerDownloadPdfCatalog = triggerDownloadPdfCatalog;
+
+    // Escucha de ruta #admin
+    window.addEventListener("hashchange", () => {
+      if (window.location.hash === "#admin") {
+        if (currentUser && !currentUser.isAnonymous) {
+          switchView("admin");
+        } else {
+          openAdminLoginModal();
+        }
+      } else {
+        switchView("client");
+      }
+    });
+
+    // Iniciar controladores al cargar el DOM
+    document.addEventListener("DOMContentLoaded", () => {
+      initAuthAndSubscriptions();
+      if (window.location.hash === "#admin") {
+        setTimeout(openAdminLoginModal, 400);
+      }
+    });
+  </script>
+</body>
+</html>
