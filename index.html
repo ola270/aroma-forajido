@@ -2938,7 +2938,7 @@
     async function handleAdminLoginSubmit(e) {
       e.preventDefault();
       const email = document.getElementById("adminEmailInput").value.trim();
-      const pass = document.getElementById("adminPassInput").value;
+      const pass = document.getElementById("adminPassInput").value.trim();
       const btn = document.getElementById("btnAdminLoginSubmit");
 
       btn.disabled = true;
@@ -2948,14 +2948,18 @@
         await signInWithEmailAndPassword(auth, email, pass);
         closeAdminLoginModal();
         switchView("admin");
-        showToast("Sesión iniciada con Firebase Authentication");
+        showToast("¡Bienvenido! Sesión iniciada con Firebase");
       } catch (error) {
         console.error("Firebase Auth Error:", error);
-        let msg = "Error al autenticar: revisa credenciales";
-        if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
-          msg = "Correo o contraseña incorrectos.";
+        let msg = "Error al autenticar (" + error.code + ")";
+        if (error.code === 'auth/unauthorized-domain') {
+          msg = "Dominio ola270.github.io no autorizado en Firebase > Authentication > Configuración > Dominios";
+        } else if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
+          msg = "Contraseña o correo incorrectos.";
         } else if (error.code === 'auth/user-not-found') {
-          msg = "Usuario no registrado en Firebase.";
+          msg = "Usuario no encontrado en Firebase.";
+        } else if (error.code === 'auth/too-many-requests') {
+          msg = "Demasiados intentos. Espera unos momentos.";
         }
         showToast(msg);
       } finally {
